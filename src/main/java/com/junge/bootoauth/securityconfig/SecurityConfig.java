@@ -23,21 +23,21 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 	PasswordConfig pd;
 	@Autowired
 	SaltConfig salt;
-	 @Bean
-	    @Override
-	    protected UserDetailsService userDetailsService(){
-	        InMemoryUserDetailsManager manager = new InMemoryUserDetailsManager();
-	        manager.createUser(User.withUsername("user_1").password("123456").authorities("USER").build());
-	        manager.createUser(User.withUsername("user_2").password("123456").authorities("USER").build());
-	        return manager;
-	    }
+//	 @Bean
+//	    @Override
+//	    protected UserDetailsService userDetailsService(){
+//	        InMemoryUserDetailsManager manager = new InMemoryUserDetailsManager();
+//	        manager.createUser(User.withUsername("user_1").password("123456").authorities("USER").build());
+//	        manager.createUser(User.withUsername("user_2").password("123456").authorities("USER").build());
+//	        return manager;
+//	    }
 
 	    @Override
 	    protected void configure(HttpSecurity http) throws Exception {
 	    	
 	    	http.authorizeRequests()
-//	    	  .antMatchers("/**").permitAll()//spring security对路径不拦截
-              .anyRequest().authenticated()//所有请求需要认证即登录后才能访问
+	    	  .antMatchers("oauth/**").permitAll()//spring security对路径不拦截
+              .anyRequest().authenticated()//;//所有请求需要认证即登录后才能访问
               .and()
               .formLogin()
               .permitAll()

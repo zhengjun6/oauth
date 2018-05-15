@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.junge.bootoauth.dao.ClientDetailDao">
+	
+	<select id="getById" resultType="com.junge.bootoauth.entity.ClientDetail">
+		SELECT
+		T.*
+		FROM oauth_client_details T
+		WHERE T.client_id = #{clientId} 
+	</select>
+	
+</mapper>
